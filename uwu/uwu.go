@@ -11,6 +11,9 @@ type Config struct {
 	// Lowercase determines whether or not the text should be lowercased.
 	Lowercase bool `query:"lower"`
 
+	// ReplaceLetters determines whether or not letters should be replaced.
+	ReplaceLetters bool `query:"replace"`
+
 	// Faces determines whether or not cute Unicode faces should be added.
 	FacesChance int `query:"facesChance"`
 
@@ -24,10 +27,11 @@ type Config struct {
 // NewConfig returns a new Config with default values.
 func NewConfig() Config {
 	return Config{
-		Lowercase:     true,
-		FacesChance:   10,
-		StutterChance: 30,
-		StutterAmount: 1,
+		Lowercase:      true,
+		ReplaceLetters: true,
+		FacesChance:    10,
+		StutterChance:  30,
+		StutterAmount:  1,
 	}
 }
 
@@ -35,6 +39,10 @@ func NewConfig() Config {
 func UwUify(text string, cfg Config) string {
 	if cfg.Lowercase {
 		text = strings.ToLower(text)
+	}
+
+	if cfg.ReplaceLetters {
+		text = ReplaceLetters(text)
 	}
 
 	text = Stutter(text, cfg.StutterChance, cfg.StutterAmount)
