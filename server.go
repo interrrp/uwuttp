@@ -1,10 +1,9 @@
 package main
 
 import (
-	"log"
+	"github.com/labstack/echo/v4"
 
 	"github.com/interrrp/uwuttp/uwu"
-	"github.com/labstack/echo/v4"
 )
 
 func main() {
@@ -15,23 +14,10 @@ func main() {
 
 		text := c.QueryParam("text")
 
-		var result string
-
-		cacheKey := encodeUwUKey(text, cfg)
-		log.Println(cacheKey)
-		cached, err := cacheGet(cacheKey)
-		if err != nil {
-			result = uwu.UwUify(text, cfg)
-			cacheSet(cacheKey, result)
-		} else {
-			log.Println("cache hit")
-			result = cached
-		}
-
 		return c.JSON(
 			200,
 			map[string]any{
-				"text":   result,
+				"text":   uwu.UwUify(text, cfg),
 				"config": cfg,
 			},
 		)
@@ -45,7 +31,7 @@ func main() {
 
 // cfgFromCtx returns an uwu.Config from a Context.
 func cfgFromCtx(c echo.Context) uwu.Config {
-	var cfg uwu.Config
+	cfg := uwu.NewConfig()
 	c.Bind(&cfg)
 
 	return cfg

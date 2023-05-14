@@ -21,6 +21,16 @@ type Config struct {
 	StutterAmount int `query:"stutterAmount"`
 }
 
+// NewConfig returns a new Config with default values.
+func NewConfig() Config {
+	return Config{
+		Lowercase:     true,
+		FacesChance:   20,
+		StutterChance: 20,
+		StutterAmount: 1,
+	}
+}
+
 // UwUify takes a string and returns a uwuified version of it.
 func UwUify(text string, cfg Config) string {
 	if cfg.Lowercase {

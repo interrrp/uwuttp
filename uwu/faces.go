@@ -2,9 +2,7 @@
 
 package uwu
 
-import (
-	"strings"
-)
+import "strings"
 
 // Faces is a list of cute Unicode faces.
 var Faces = []string{
