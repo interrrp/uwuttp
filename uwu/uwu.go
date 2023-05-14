@@ -25,8 +25,8 @@ type Config struct {
 func NewConfig() Config {
 	return Config{
 		Lowercase:     true,
-		FacesChance:   20,
-		StutterChance: 20,
+		FacesChance:   10,
+		StutterChance: 30,
 		StutterAmount: 1,
 	}
 }

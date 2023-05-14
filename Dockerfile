@@ -7,7 +7,7 @@ RUN go mod download
 
 COPY . .
 
-RUN go build -o main .
+RUN go build -ldflags "-s -w" -o main .
 
 ENV ADDR=:80
 EXPOSE 80
