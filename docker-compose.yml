@@ -1,0 +1,15 @@
+version: "2.17.3"
+services:
+  cache:
+    image: redis:alpine
+    restart: always
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - 8080:80
+    depends_on:
+      - cache
