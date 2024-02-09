@@ -3,7 +3,8 @@ package main
 import (
 	"github.com/labstack/echo/v4"
 
-	"github.com/interrrp/uwuttp/uwu"
+	"github.com/interrrp/uwuttp/internal/utils"
+	"github.com/interrrp/uwuttp/pkg/uwu"
 )
 
 func main() {
@@ -23,7 +24,7 @@ func main() {
 		)
 	})
 
-	port := envOr("ADDR", ":8080")
+	port := utils.EnvOr("ADDR", ":8080")
 	if err := app.Start(port); err != nil {
 		app.Logger.Fatal(err)
 	}
