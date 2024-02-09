@@ -7,9 +7,9 @@ RUN go mod download
 
 COPY . .
 
-RUN go build -ldflags "-s -w" -o main .
+RUN go build -ldflags "-s -w" -o app ./cmd
 
 ENV ADDR=:80
 EXPOSE 80
 
-CMD ["./main"]
+CMD ["./app"]
