@@ -1,7 +1,5 @@
 # uwuttp
 
-<sub>This README was written by ChatGPT. Have fun reading it.</sub>
-
 ## Description
 
 uwuttp is a fun web server that UwU-ifies any given piece of text. Want to add a touch of cuteness and
@@ -58,5 +56,5 @@ Alternatively, you could use Docker:
 docker compose up --d --build
 ```
 
-You can now access the server at http://localhost:8080/ (see
+You can now access the server at <http://localhost:8080/> (see
 [the Compose file](docker-compose.yml>)).
