@@ -8,7 +8,7 @@ RUN go mod tidy
 
 RUN go build -ldflags "-s -w" -o app ./cmd
 
-ENV ADDR=:80
+ENV PORT=80
 EXPOSE 80
 
 CMD ["./app"]

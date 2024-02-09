@@ -24,8 +24,8 @@ func main() {
 		)
 	})
 
-	port := utils.EnvOr("ADDR", ":8080")
-	if err := app.Start(port); err != nil {
+	port := utils.EnvOr("PORT", "8080")
+	if err := app.Start(":" + port); err != nil {
 		app.Logger.Fatal(err)
 	}
 }
